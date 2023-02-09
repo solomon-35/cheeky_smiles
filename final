@@ -1,0 +1,76 @@
+def party_invoice(addons=None):
+    
+    base_price = 100
+
+    # input each addon as a string with the quantity and type
+    # seperate each addon with a comma
+    addons = addons or input("What are the party addons?")
+    # print(addons)
+    
+    # use the "split" method to convert the addons to a list
+    addons_list = addons.split(",")
+    # print(addons_list)
+
+    invoice = "Thank you for choosing Cheeky Smiles for your party needs! Here is your itemized invoice:\n\n"
+    
+    for addon in addons_list:
+        # print(addon)
+        
+        item = addon[-1]
+        count = int(addon[:-1])
+        # print("item: ", item, "count: ", count)
+        
+        # Ms. WHitby - What does this do?
+        if item == "H":
+            item_price = 50 * count
+            base_price = base_price + item_price
+            itemized_string = "Bouncy House, " +  str(count) + ",  $" + "{0:.2f}".format(item_price)
+
+            
+        if item  == "S":
+            item_price = 40 * count
+            base_price = base_price + item_price
+            itemized_string = "Slip & Slide, " + str(count) + ",  $" + "{0:.2f}".format(item_price)
+                 
+        if item == "Y":
+            item_price = 35 * count
+            base_price = base_price + item_price
+            itemized_string = "Yard Sign, " + str(count) + ", " + "{0:.2f}".format(item_price)
+
+        if item == "p":
+            item_price = 10 * count
+            base_price = base_price + item_price
+            itemized_string = "Pizza, " +  str(count) + ",  $" + "{0:.2f}".format(item_price)
+            
+        if item =="b":
+            item_price = 2 * count
+            base_price = base_price + item_price
+            itemized_string = "Burger, " + str(count) + ",  $" + "{0:.2f}".format(item_price)
+
+        if item == "s":
+            item_price =.50 * count
+            base_price = base_price + item_price
+            itemized_string = "Soda, " + str(count) + ",  $" + "{0:.2f}".format(item_price)
+                
+        if item == "C":
+            item_price = 15 * count
+            base_price = base_price + item_price
+            itemized_string = "Cake, " + str(count) + ",  $" + "{0:.2f}".format(item_price)
+            
+        if item == "c":
+            item_price = .25 * count
+            base_price = base_price + item_price
+            itemized_string = "Cupcakes, " + str(count) + ",  $" + "{0:.2f}".format(item_price)
+
+        invoice = invoice + "\n" + itemized_string
+    
+
+    invoice = invoice + "\n\n" + "Base Price, $100"
+    invoice = invoice + "\n" + "Total, " + "{0:.2f}".format(base_price)
+    print(invoice)
+
+
+
+addons = "1H,20c,20b,4p,20s"
+
+party_invoice(addons)
